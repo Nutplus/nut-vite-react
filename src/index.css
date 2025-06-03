@@ -1,68 +1,226 @@
+/* Cyberpunk Tech Theme Variables */
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* Colors */
+  --color-primary: #00ffff; /* 青色/亮蓝色 - 主强调色 */
+  --color-secondary: #1e2749; /* 深蓝 - 卡片等背景 */
+  --color-text: #e0e0e0; /* 浅灰色/白色 - 主要文本 */
+  --color-text-light: #a0a0a0; /* 中灰色 - 次要文本 */
+  --color-background: #0a0f1f; /* 非常深的蓝黑色 - 主背景 */
+  --color-background-alt: #16213e; /* 深蓝紫色 - 次要背景/区域背景 */
+  --color-border: #ff00ff; /* 品红色/亮粉色 - 边框或次要强调 */
+  --color-accent: #ff00ff; /* 品红色/亮粉色 - 强调/点缀 */
+  --color-cyber-orange: #c75926; /* 保留的赤陶色，作为可选暖色点缀 */
+  --color-cyber-green: #9bc4ad; /* 保留的薄荷绿，作为可选冷色点缀 */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-secondary: 'Georgia', serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-xxl: 5rem;
+  
+  /* Shadows (Cyberpunk Glow Effect) */
+  --shadow-sm: 0 0 5px rgba(var(--color-primary-rgb, 0, 255, 255), 0.5), 0 0 10px rgba(var(--color-primary-rgb, 0, 255, 255), 0.3);
+  --shadow-md: 0 0 15px rgba(var(--color-primary-rgb, 0, 255, 255), 0.6), 0 0 20px rgba(var(--color-primary-rgb, 0, 255, 255), 0.4);
+  --shadow-lg: 0 0 25px rgba(var(--color-primary-rgb, 0, 255, 255), 0.7), 0 0 35px rgba(var(--color-primary-rgb, 0, 255, 255), 0.5);
+  /* Adding RGB version of primary color for box-shadow opacity */
+  --color-primary-rgb: 0, 255, 255; /* Corresponds to #00ffff */
+  --color-accent-rgb: 255, 0, 255; /* Corresponds to #ff00ff */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+/* Reset & Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-a:hover {
-  color: #535bf2;
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: var(--font-primary);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-primary);
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent); /* Change hover to accent color for more pop */
+  text-shadow: 0 0 5px var(--color-accent); /* Add a subtle glow on hover */
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: var(--spacing-md);
+  padding-left: var(--spacing-lg);
+}
+
+li {
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Form Elements */
+input, textarea, select, button {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-secondary);
+  color: var(--color-text); /* Ensure text in inputs is readable */
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 8px rgba(var(--color-primary-rgb, 0, 255, 255), 0.7); /* Glow on focus */
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  border: none;
+  background: none;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.hidden {
+  display: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+  html {
+    font-size: 15px;
   }
-  a:hover {
-    color: #747bff;
+}
+
+@media (max-width: 992px) {
+  html {
+    font-size: 14px;
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 13px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  html {
+    font-size: 12px;
   }
 }

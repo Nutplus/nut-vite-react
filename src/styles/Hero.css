@@ -1,0 +1,291 @@
+/* Hero Section Styles */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: var(--color-background);
+  padding-top: 5rem; /* To account for fixed header */
+}
+
+.hero .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Hero Content */
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-content h2 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-light);
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--color-text);
+}
+
+/* Hero Buttons */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.hero-buttons .btn {
+  transition: all var(--transition-fast); /* Ensure transition is applied */
+}
+
+.hero-buttons .btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-background); /* Text color for primary button */
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 0 8px rgba(var(--color-primary-rgb), 0.5);
+}
+.hero-buttons .btn-primary:hover {
+  background-color: transparent;
+  color: var(--color-primary);
+  box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.8);
+}
+
+.hero-buttons .btn-secondary {
+  background-color: transparent;
+  color: var(--color-accent); /* Text color for secondary button */
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 0 8px rgba(var(--color-accent-rgb), 0.5);
+}
+.hero-buttons .btn-secondary:hover {
+  background-color: var(--color-accent);
+  color: var(--color-background); /* Ensure contrast on hover */
+  box-shadow: 0 0 15px rgba(var(--color-accent-rgb), 0.8);
+}
+
+/* Tool Links Bar */
+.tool-links-bar {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(var(--color-primary-rgb), 0.3); /* Subtle top border */
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center; /* Center links by default */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.tool-link {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  border: 1px solid transparent; /* For hover effect */
+}
+
+.tool-link:hover {
+  color: var(--color-accent);
+  background-color: rgba(var(--color-accent-rgb), 0.1);
+  border-color: rgba(var(--color-accent-rgb), 0.5);
+  text-shadow: 0 0 3px rgba(var(--color-accent-rgb), 0.5);
+}
+
+
+/* Hero Image */
+.hero-image {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Geometric Elements for Visual Interest */
+.geometric-element {
+  position: absolute;
+  opacity: 0.3; /* Increase opacity for more presence */
+  border-radius: var(--radius-sm);
+  /* Mix primary and accent for geometric elements */
+}
+
+.geometric-element:nth-child(1) {
+  width: 200px;
+  height: 200px;
+  top: -30px;
+  right: 20px;
+  transform: rotate(15deg);
+  background-color: var(--color-primary);
+  box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.5);
+}
+
+.geometric-element:nth-child(2) {
+  width: 150px;
+  height: 150px;
+  bottom: 40px;
+  left: 0;
+  transform: rotate(-10deg);
+  background-color: var(--color-accent);
+  box-shadow: 0 0 15px rgba(var(--color-accent-rgb), 0.5);
+}
+
+.geometric-element:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  right: 30%;
+  transform: rotate(45deg);
+  background-color: var(--color-primary);
+  opacity: 0.2; /* Slightly less opacity for this one */
+  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.4);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mouse {
+  width: 30px;
+  height: 50px;
+  border: 2px solid var(--color-primary);
+  border-radius: 20px;
+  position: relative;
+}
+
+.wheel {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scroll 1.5s infinite;
+}
+
+.arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.arrow span {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid var(--color-primary);
+  border-right: 2px solid var(--color-primary);
+  transform: rotate(45deg);
+}
+
+.arrow span:nth-child(1) {
+  animation: arrow 1.5s infinite;
+  animation-delay: 0.2s;
+}
+
+.arrow span:nth-child(2) {
+  animation: arrow 1.5s infinite;
+}
+
+@keyframes scroll {
+  0% {
+    opacity: 1;
+    top: 10px;
+  }
+  100% {
+    opacity: 0;
+    top: 30px;
+  }
+}
+
+@keyframes arrow {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-5px, -5px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .hero .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .hero-content {
+    max-width: 100%;
+  }
+  
+  .hero-buttons {
+    justify-content: center;
+  }
+  .tool-links-bar {
+    justify-content: center; /* Ensure it stays centered */
+  }
+  .hero-image {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.8rem;
+  }
+  
+  .hero-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .geometric-element {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .hero-buttons .btn {
+    width: 100%;
+  }
+  .tool-links-bar {
+    gap: 1rem; /* Reduce gap on smaller screens */
+  }
+  .tool-link {
+    font-size: 0.85rem; /* Slightly smaller font for tool links */
+  }
+}
